@@ -1,10 +1,15 @@
 node('master')
 {
-    properties([[$class: 'JiraProjectProperty'], buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '3')), pipelineTriggers([pollSCM('* * * * *')])])
-
     def mavenHome = tool name: "maven3.6.3"
     mavenHome="$mavenHome/bin"
     
+      echo "GitHub BranhName ${env.BRANCH_NAME}"
+      echo "Jenkins Job Number ${env.BUILD_NUMBER}"
+      echo "Jenkins Node Name ${env.NODE_NAME}"
+      echo "Jenkins Home ${env.JENKINS_HOME}"
+      echo "Jenkins URL ${env.JENKINS_URL}"
+      echo "JOB Name ${env.JOB_NAME}"
+    //properties([[$class: 'JiraProjectProperty'], buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '3')), pipelineTriggers([pollSCM('* * * * *')])])
     stage("CheckoutCode")
     {
     git branch: 'development', credentialsId: '47bb3ee0-921a-4468-b969-c29cb31a067a', url: 'https://github.com/NaveenTechnologiesDevOps/maven-web-application.git'
