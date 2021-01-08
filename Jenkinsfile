@@ -10,7 +10,8 @@ node('master')
       echo "Jenkins URL ${env.JENKINS_URL}"
       echo "JOB Name ${env.JOB_NAME}"
     
-    properties([[$class: 'JiraProjectProperty'], pipelineTriggers([cron('* * * * *')])])
+    properties([[$class: 'JiraProjectProperty'], pipelineTriggers([githubPush()])])
+    //properties([[$class: 'JiraProjectProperty'], pipelineTriggers([cron('* * * * *')])])
     //properties([[$class: 'JiraProjectProperty'], buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '3')), pipelineTriggers([pollSCM('* * * * *')])])
     
     stage("CheckoutCode")
