@@ -1,4 +1,4 @@
-node('master')
+node("node-1")
 {
     def mavenHome = tool name: "maven3.6.3"
     mavenHome="$mavenHome/bin"
